@@ -17,9 +17,11 @@ var commentRoutes = require("./routes/comments"),
   authRoutes = require("./routes/index");
 
 //DATABASEURL for local mongodb://localhost/yelp_camp
-//DATABASEURL for production mongodb+srv://bryndon:5891382Bh@yelpcamp-xj2ju.mongodb.net/test?retryWrites=true&w=majority
+//DATABASEURL for production mongodb+srv://bryndon:<PASSWORD>@yelpcamp-xj2ju.mongodb.net/test?retryWrites=true&w=majority
+//note: remember to update <PASSWORD> to mongoDB password
+var url = process.env.DATABASEURL || "mongodb://localhost/yelp_camp";
 mongoose
-  .connect(process.env.DATABASEURL, {
+  .connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
